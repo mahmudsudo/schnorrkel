@@ -1,6 +1,6 @@
-# schnorrkel [![](https://img.shields.io/crates/v/schnorrkel.svg)](https://crates.io/crates/schnorrkel) [![](https://docs.rs/schnorrkel/badge.svg)](https://docs.rs/schnorrkel) [![](https://travis-ci.org/w3f/schnorrkel.svg?branch=master)](https://travis-ci.org/w3f/schnorrkel?branch=master)
+# Schnorrkel [![](https://img.shields.io/crates/v/schnorrkel.svg)](https://crates.io/crates/schnorrkel) [![](https://docs.rs/schnorrkel/badge.svg)](https://docs.rs/schnorrkel) [![](https://travis-ci.org/w3f/schnorrkel.svg?branch=master)](https://travis-ci.org/w3f/schnorrkel?branch=master)
 
-
+## How it works 
 Schnorrkel implements Schnorr signature on [Ristretto](https://ristretto.group) compressed Ed25519 points, as well as [related](https://github.com/sipa/bips/blob/bip-schnorr/bip-schnorr.mediawiki) protocols like HDKD, [MuSig](https://eprint.iacr.org/2018/068), and a verifiable random function (VRF).  
 
 [Ristretto](https://doc.dalek.rs/curve25519_dalek/ristretto/index.html) implements roughly section 7 of Mike Hamburg's [Decaf](https://eprint.iacr.org/2015/673.pdf) paper to provide the 2-torsion free points of the Ed25519 curve as a prime order group.  ([related](https://forum.web3.foundation/t/account-signatures-and-keys-in-polkadot/70/3?u=burdges))
@@ -17,4 +17,18 @@ Aside from some naive sequential VRF construction, we currently only support the
 
 There are partial bindings for [C](https://github.com/Warchant/sr25519-crust), [JavaScript](https://github.com/paritytech/schnorrkel-js/), and [Python](https://gitlab.com/kauriid/schnorrpy/) as well.
 
+## how to use 
+some schnorkell features  requires definite versions of rand, rand_core,rand_chacha crates 
 
+cargo.toml 
+
+    ```
+    
+    [dependencies]
+    schnorkell= {git = "https://github.com/w3f/schnorrkel.git" ,version = "the_required_version"}
+    rand="0.8.5"
+    rand_chacha="0.3.1"
+    rand_core= "0.6.3"
+    
+    ```
+***rand ,rand_core,rand_chacha versions must be compatible***
